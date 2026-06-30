@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Local Claude Code config
+.claude/
+
+# Heavy source material — not used by the website.
+# assets/ contains a 127 MB video that exceeds GitHub's 100 MB file limit.
+# The site only needs hotel-app/public/images.
+assets/
+docs/
