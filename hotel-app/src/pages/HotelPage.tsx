@@ -9,15 +9,20 @@ import ServiceSection from '../components/ServiceSection'
 import { facilities } from '../data/site'
 import { thumb, med } from '../data/img'
 
+// Imágenes de apoyo: para los conceptos genéricos (Wi-Fi, aire, estacionamiento,
+// seguridad, reserva) usamos fotografías libres de Unsplash servidas desde su CDN;
+// para los que sí representamos con fotos propias usamos nuestras imágenes locales.
+const U = (id: string) => `https://images.unsplash.com/photo-${id}?w=800&q=70&fm=jpg&fit=crop`
+
 const amenities = [
-  { icon: Wifi, title: 'Wi-Fi Gratuito', desc: 'Conexión en todas las áreas' },
-  { icon: Wind, title: 'Aire Acondicionado', desc: 'En habitaciones seleccionadas' },
-  { icon: Car, title: 'Estacionamiento', desc: 'Área disponible para huéspedes' },
-  { icon: Coffee, title: 'Atención 24/7', desc: 'Recepción y servicio continuo' },
-  { icon: Shield, title: 'Seguridad', desc: 'Instalaciones seguras' },
-  { icon: Star, title: 'Alberca y Jardines', desc: 'Áreas verdes y de descanso' },
-  { icon: MapPin, title: 'Ubicación Central', desc: 'A pasos de la Catedral' },
-  { icon: Phone, title: 'Reserva Directa', desc: 'Mejor tarifa garantizada' },
+  { icon: Wifi, title: 'Wi-Fi Gratuito', desc: 'Conexión en todas las áreas', image: U('1645725677294-ed0843b97d5c') },
+  { icon: Wind, title: 'Aire Acondicionado', desc: 'En habitaciones seleccionadas', image: U('1762341123870-d706f257a12e') },
+  { icon: Car, title: 'Estacionamiento', desc: 'Área disponible para huéspedes', image: U('1624211822547-9f6e733d32c4') },
+  { icon: Coffee, title: 'Atención 24/7', desc: 'Recepción y servicio continuo', image: '/images/Hotel/vc-153.webp' },
+  { icon: Shield, title: 'Seguridad', desc: 'Instalaciones seguras', image: U('1589935447067-5531094415d1') },
+  { icon: Star, title: 'Alberca y Jardines', desc: 'Áreas verdes y de descanso', image: '/images/Hotel/vc-151.webp' },
+  { icon: MapPin, title: 'Ubicación Central', desc: 'A pasos de la Catedral', image: '/images/Catedral/vc-58.webp' },
+  { icon: Phone, title: 'Reserva Directa', desc: 'Mejor tarifa garantizada', image: U('1726066012801-14d892021339') },
 ]
 
 export default function HotelPage() {
@@ -89,14 +94,25 @@ export default function HotelPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {amenities.map((a, i) => {
               const Icon = a.icon
+              const src = a.image.startsWith('http') ? a.image : med(a.image)
               return (
                 <Reveal key={a.title} delay={i * 50}>
-                  <div className="p-6 rounded-xl border border-white/8 text-center h-full hover:border-yellow-400/30 transition-all" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                    <div className="w-12 h-12 rounded-full bg-yellow-400/10 flex items-center justify-center mx-auto mb-3">
-                      <Icon size={20} className="text-yellow-400" />
+                  <div className="group relative h-44 md:h-52 overflow-hidden rounded-xl border border-white/10">
+                    <img
+                      src={src}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#081221] via-[#081221]/75 to-[#081221]/10" />
+                    <div className="relative z-10 flex flex-col justify-end h-full p-4">
+                      <div className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center mb-2 shadow-lg">
+                        <Icon size={18} style={{ color: '#0a1628' }} />
+                      </div>
+                      <h3 className="text-white font-semibold text-sm mb-0.5">{a.title}</h3>
+                      <p className="text-gray-200/85 text-xs leading-relaxed">{a.desc}</p>
                     </div>
-                    <h3 className="text-white font-medium text-sm mb-1">{a.title}</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">{a.desc}</p>
                   </div>
                 </Reveal>
               )

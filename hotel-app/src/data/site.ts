@@ -17,7 +17,13 @@ const img = (folder: string, n: number) => `/images/${folder}/vc-${n}.webp`
 
 export const logo = '/images/logos/LOGOS.webp'
 
+// Emblema del gobierno municipal de Tlapa de Comonfort
+export const tlapaLogo = '/images/logos/tlapa-gobierno.webp'
+
 export const heroSlides = [22, 6, 14, 34, 151, 11].map((n) => img('Hotel', n))
+
+// Imagen de respaldo del hero (se muestra mientras carga el video / si no carga)
+export const heroPoster = img('Hotel', 157)
 
 export interface RoomType {
   slug: string
@@ -163,8 +169,8 @@ export const tlapaAttractions: Attraction[] = [
 ]
 
 export const homeHighlights = [
-  { icon: 'Building2', title: 'Encanto Colonial', text: 'Arquitectura tradicional con arcos, jardines y patios.' },
-  { icon: 'Waves', title: 'Jardines y Alberca', text: 'Amplias áreas verdes y alberca para tu descanso.' },
-  { icon: 'MapPin', title: 'Centro de Tlapa', text: 'A pasos de la Catedral y el Zócalo.' },
-  { icon: 'ConciergeBell', title: 'Atención 24/7', text: 'Servicio cálido y personalizado todo el día.' },
+  { icon: 'Building2', title: 'Encanto Colonial', text: 'Arquitectura tradicional con arcos de cantera, jardines y patios llenos de historia.', image: img('Hotel', 11) },
+  { icon: 'Waves', title: 'Jardines y Alberca', text: 'Amplias áreas verdes con palmeras y una alberca para tu descanso.', image: img('Hotel', 6) },
+  { icon: 'MapPin', title: 'Centro de Tlapa', text: 'A unos pasos de la Catedral y el Zócalo, en el corazón de La Montaña.', image: img('Catedral', 58) },
+  { icon: 'ConciergeBell', title: 'Atención 24/7', text: 'Un equipo cálido y personalizado, atento a cada detalle a toda hora.', image: img('Hotel', 153) },
 ]

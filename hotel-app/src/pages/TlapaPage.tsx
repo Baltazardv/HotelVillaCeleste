@@ -4,8 +4,8 @@ import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Lightbox from '../components/Lightbox'
 import CTABand from '../components/CTABand'
-import { tlapaAttractions, contact } from '../data/site'
-import { thumb, med } from '../data/img'
+import { tlapaAttractions, contact, tlapaLogo } from '../data/site'
+import { thumb, med, withBase } from '../data/img'
 
 const nearby = [
   { Icon: Church, name: 'Catedral de Tlapa', distance: '2 min a pie' },
@@ -28,7 +28,23 @@ export default function TlapaPage() {
       />
 
       <section className="py-16 px-6 md:px-12 lg:px-16 bg-navy-900">
-        <div className="max-w-4xl mx-auto text-center mb-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <Reveal>
+            <div className="flex flex-col items-center mb-8">
+              <div className="rounded-full bg-white/95 p-6 md:p-8 shadow-2xl shadow-black/40 ring-1 ring-white/20">
+                <img
+                  src={withBase(tlapaLogo)}
+                  alt="Escudo del gobierno municipal de Tlapa de Comonfort"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-32 h-32 md:w-44 md:h-44 object-contain"
+                />
+              </div>
+              <p className="text-yellow-400 text-xs md:text-sm tracking-[0.3em] uppercase font-medium mt-5">
+                Tlapa de Comonfort · Guerrero
+              </p>
+            </div>
+          </Reveal>
           <p className="text-gray-300 text-lg leading-relaxed">
             Tlapa de Comonfort es el corazón comercial y cultural de La Montaña de Guerrero. Su Catedral,
             su animado Zócalo y los portales con murales históricos hacen de cada paseo una experiencia

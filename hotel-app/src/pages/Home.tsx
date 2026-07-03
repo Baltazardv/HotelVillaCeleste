@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AnimatedHeading from '../components/AnimatedHeading'
 import FadeIn from '../components/FadeIn'
@@ -7,38 +6,26 @@ import SectionHeading from '../components/SectionHeading'
 import CTABand from '../components/CTABand'
 import ServiceSection from '../components/ServiceSection'
 import { Building2, Waves, MapPin, ConciergeBell, Star } from 'lucide-react'
-import { heroSlides, homeHighlights, roomTypes, facilities, tlapaAttractions, contact } from '../data/site'
+import { heroPoster, homeHighlights, roomTypes, facilities, tlapaAttractions, contact } from '../data/site'
 import { thumb, med } from '../data/img'
 
 const highlightIcons = { Building2, Waves, MapPin, ConciergeBell }
 
-function HeroSlideshow() {
-  const [idx, setIdx] = useState(0)
-  const [loaded, setLoaded] = useState<number[]>([0])
-  useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % heroSlides.length), 6000)
-    return () => clearInterval(t)
-  }, [])
-  // Only mount the background image once a slide is about to be shown
-  useEffect(() => {
-    const next = (idx + 1) % heroSlides.length
-    setLoaded((l) => Array.from(new Set([...l, idx, next])))
-  }, [idx])
+const heroVideo = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/videos/video-hotel-juntos.mp4`
+
+function HeroVideo() {
   return (
     <div className="absolute inset-0">
-      {heroSlides.map((src, i) => (
-        <div
-          key={src}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: loaded.includes(i) ? `url('${med(src)}')` : undefined,
-            opacity: i === idx ? 1 : 0,
-            transform: i === idx ? 'scale(1.06)' : 'scale(1)',
-            transition: 'opacity 1500ms ease, transform 7000ms ease',
-            willChange: 'opacity',
-          }}
-        />
-      ))}
+      <video
+        className="w-full h-full object-cover"
+        src={heroVideo}
+        poster={med(heroPoster)}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
     </div>
   )
 }
@@ -48,7 +35,7 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="relative w-full h-screen min-h-[600px] flex flex-col overflow-hidden">
-        <HeroSlideshow />
+        <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/40 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-16 pt-24 pb-12 lg:pb-16">
@@ -100,20 +87,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HIGHLIGHTS */}
+      {/* HIGHLIGHTS — bento con personalidad */}
       <section className="py-20 px-6 md:px-12 lg:px-16 bg-navy-900">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 lg:h-[560px]">
             {homeHighlights.map((h, i) => {
               const Icon = highlightIcons[h.icon as keyof typeof highlightIcons]
+              const feature = i === 0
+              const span = feature
+                ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2'
+                : i === 1
+                  ? 'sm:col-span-2 lg:col-span-2'
+                  : 'lg:col-span-1'
               return (
-                <Reveal key={h.title} delay={i * 80}>
-                  <div className="p-6 rounded-xl border border-white/8 text-center h-full" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                    <div className="w-12 h-12 rounded-full bg-yellow-400/10 flex items-center justify-center mx-auto mb-3">
-                      <Icon size={22} className="text-yellow-400" />
+                <Reveal
+                  key={h.title}
+                  delay={i * 80}
+                  className={`${span} min-h-[220px] lg:min-h-0 h-full`}
+                >
+                  <div className="group relative w-full h-full overflow-hidden rounded-2xl border border-white/10">
+                    <img
+                      src={med(h.image)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#081221] via-[#081221]/70 to-transparent" />
+                    <div className="relative z-10 flex flex-col justify-end h-full p-6">
+                      <div className={`rounded-full bg-yellow-400 flex items-center justify-center mb-3 shadow-lg ${feature ? 'w-14 h-14' : 'w-12 h-12'}`}>
+                        <Icon size={feature ? 26 : 22} style={{ color: '#0a1628' }} />
+                      </div>
+                      <h3 className={`text-white font-semibold mb-1 ${feature ? 'text-2xl md:text-3xl' : 'text-lg'}`}>
+                        {h.title}
+                      </h3>
+                      <p className={`text-gray-200/90 leading-relaxed ${feature ? 'text-base max-w-md' : 'text-sm'}`}>
+                        {h.text}
+                      </p>
                     </div>
-                    <h3 className="text-white font-medium text-sm mb-2">{h.title}</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">{h.text}</p>
                   </div>
                 </Reveal>
               )

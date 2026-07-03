@@ -139,3 +139,94 @@ export const galleryCategories = [
 export const allImages: GalleryImage[] = [
   ...hotelImages, ...roomImages, ...catedralImages, ...zocaloImages,
 ]
+
+// ---- Recorrido narrativo (storytelling) ----
+// La galería se presenta como un viaje por capítulos: la llegada al hotel,
+// sus jardines y alberca, el descanso en las habitaciones y, más allá de
+// nuestras puertas, el corazón colonial de Tlapa de Comonfort.
+const H = (n: number) => `/images/Hotel/vc-${n}.webp`
+const C = (n: number) => `/images/Catedral/vc-${n}.webp`
+const Z = (n: number) => `/images/Zocalo/vc-${n}.webp`
+
+export interface StoryChapter {
+  id: string
+  kicker: string      // etiqueta corta (ubicación / momento)
+  eyebrow: string     // número de capítulo se genera al renderizar
+  title: string
+  story: string
+  feature: string     // imagen protagonista del capítulo
+  images: string[]    // set completo (incluye la protagonista)
+}
+
+export const galleryStory: StoryChapter[] = [
+  {
+    id: 'llegada',
+    kicker: 'La llegada',
+    eyebrow: 'Capítulo uno',
+    title: 'Cruzar el umbral de una casona colonial',
+    story:
+      'Arcos de cantera, columnas y corredores que guardan el eco de otra época. Desde el primer paso, el Hotel Villa Celeste recibe con la calidez de una casa guerrerense y la elegancia de la arquitectura colonial de La Montaña.',
+    feature: H(22),
+    images: [H(22), H(11), H(7), H(16), H(25), H(34), H(33), H(23), H(1), H(2), H(5), H(10)],
+  },
+  {
+    id: 'jardines',
+    kicker: 'Los jardines',
+    eyebrow: 'Capítulo dos',
+    title: 'Un respiro verde en el corazón de Tlapa',
+    story:
+      'Palmeras, vegetación tropical y senderos sombreados componen un oasis donde el tiempo parece detenerse. Nuestros jardines son el lugar perfecto para un café por la mañana o una charla al caer la tarde.',
+    feature: H(6),
+    images: [H(6), H(13), H(14), H(21), H(26), H(39), H(40), H(15), H(24), H(27), H(3), H(4)],
+  },
+  {
+    id: 'alberca',
+    kicker: 'La alberca',
+    eyebrow: 'Capítulo tres',
+    title: 'El azul que invita a quedarse',
+    story:
+      'Rodeada de jardines y bañada por el sol de La Montaña, nuestra alberca es refugio y descanso a partes iguales. El espacio ideal para refrescarse después de recorrer la ciudad.',
+    feature: H(151),
+    images: [H(151), H(9), H(12), H(148), H(149), H(150)],
+  },
+  {
+    id: 'habitaciones',
+    kicker: 'El descanso',
+    eyebrow: 'Capítulo cuatro',
+    title: 'Habitaciones pensadas para reposar',
+    story:
+      'De los acabados clásicos de madera a los pisos de mármol y detalles contemporáneos, cada habitación conserva el encanto del hotel. Espacios luminosos y confortables donde recuperar fuerzas para el día siguiente.',
+    feature: H(121),
+    images: [H(121), H(122), H(123), H(124), H(125), H(111), H(128), H(129), H(130), H(132), H(133), H(134), H(135), H(136), H(138), H(139), H(141), H(110), H(112)],
+  },
+  {
+    id: 'detalles',
+    kicker: 'Los detalles',
+    eyebrow: 'Capítulo cinco',
+    title: 'Pequeños gestos que se quedan en la memoria',
+    story:
+      'Una suite amplia para las ocasiones especiales, amenidades de bienvenida y ese cuidado en cada rincón que convierte una estancia en un recuerdo. Los detalles son, muchas veces, lo que hace volver a nuestros huéspedes.',
+    feature: H(144),
+    images: [H(144), H(145), H(147), H(115), H(120), H(117), H(118), H(119), H(113), H(114), H(143), H(146)],
+  },
+  {
+    id: 'catedral',
+    kicker: 'A unos pasos · La Catedral',
+    eyebrow: 'Capítulo seis',
+    title: 'La joya colonial que corona la ciudad',
+    story:
+      'A solo un par de minutos del hotel se alza el Santuario y Catedral de Tlapa, con sus retablos e interiores de cantera. Un imprescindible para entender la historia y la fe de la región de La Montaña.',
+    feature: C(58),
+    images: [C(58), C(59), C(60), C(62), C(63), C(64), C(65), C(66), C(67), C(68), C(41), C(51), C(52), C(53), C(54), C(55), C(56), C(57), C(71)],
+  },
+  {
+    id: 'zocalo',
+    kicker: 'El corazón · El Zócalo',
+    eyebrow: 'Capítulo siete',
+    title: 'Donde late la vida de La Montaña',
+    story:
+      'El Zócalo, su kiosco tradicional y los portales con murales históricos concentran el bullicio, el color y el comercio de Tlapa. Un paseo obligado para sentir el pulso auténtico de la ciudad.',
+    feature: Z(87),
+    images: [Z(87), Z(92), Z(93), Z(94), Z(95), Z(96), Z(97), Z(98), Z(99), Z(101), Z(102), Z(103), Z(104), Z(43), Z(44), Z(72), Z(78), Z(79), Z(81), Z(84), Z(106), Z(107), Z(108), Z(109)],
+  },
+]
