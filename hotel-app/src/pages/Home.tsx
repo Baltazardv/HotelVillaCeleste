@@ -11,6 +11,13 @@ import { thumb, med } from '../data/img'
 
 const highlightIcons = { Building2, Waves, MapPin, ConciergeBell }
 
+const FacebookIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
+)
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+)
+
 const heroVideo = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/videos/video-hotel-juntos.mp4`
 
 function HeroVideo() {
@@ -65,6 +72,17 @@ export default function Home() {
                   </Link>
                   <a href={contact.phone1.href} className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium text-sm hover:bg-white hover:text-black transition-all">
                     Reservar ahora
+                  </a>
+                </div>
+              </FadeIn>
+              <FadeIn delay={1500} duration={1000}>
+                <div className="flex items-center gap-3 mt-6">
+                  <span className="text-white/60 text-xs tracking-wide uppercase mr-1">Síguenos</span>
+                  <a href={contact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center gap-2 bg-blue-600/20 border border-blue-400/40 text-blue-100 px-4 py-2.5 rounded-xl text-xs font-medium hover:bg-blue-600/35 transition-colors backdrop-blur-sm">
+                    <FacebookIcon /> Facebook
+                  </a>
+                  <a href={contact.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-2 bg-pink-500/20 border border-pink-400/40 text-pink-100 px-4 py-2.5 rounded-xl text-xs font-medium hover:bg-pink-500/35 transition-colors backdrop-blur-sm">
+                    <InstagramIcon /> Instagram
                   </a>
                 </div>
               </FadeIn>
