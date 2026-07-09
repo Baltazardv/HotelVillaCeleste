@@ -76,13 +76,16 @@ export default function Home() {
                 </div>
               </FadeIn>
               <FadeIn delay={1500} duration={1000}>
-                <div className="flex items-center gap-3 mt-6">
-                  <span className="text-white/60 text-xs tracking-wide uppercase mr-1">Síguenos</span>
+                <div className="flex flex-wrap items-center gap-2.5 mt-6">
+                  <span className="text-white/60 text-xs tracking-wide uppercase mr-1 w-full sm:w-auto">Síguenos</span>
                   <a href={contact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center gap-2 bg-blue-600/20 border border-blue-400/40 text-blue-100 px-4 py-2.5 rounded-xl text-xs font-medium hover:bg-blue-600/35 transition-colors backdrop-blur-sm">
                     <FacebookIcon /> Facebook
                   </a>
                   <a href={contact.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-2 bg-pink-500/20 border border-pink-400/40 text-pink-100 px-4 py-2.5 rounded-xl text-xs font-medium hover:bg-pink-500/35 transition-colors backdrop-blur-sm">
                     <InstagramIcon /> Instagram
+                  </a>
+                  <a href={contact.maps} target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación en Google Maps" className="flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/40 text-emerald-100 px-4 py-2.5 rounded-xl text-xs font-medium hover:bg-emerald-500/35 transition-colors backdrop-blur-sm">
+                    <MapPin size={16} /> Ver Ubicación
                   </a>
                 </div>
               </FadeIn>

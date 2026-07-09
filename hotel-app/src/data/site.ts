@@ -7,8 +7,9 @@ export const contact = {
   phone1: { display: '+52 (757) 47 60 606', href: 'tel:+527574760606' },
   phone2: { display: '+52 (757) 49 71 625', href: 'tel:+527574971625' },
   email: 'hotel.villa.celeste26@gmail.com',
-  facebook: 'https://www.facebook.com/HotelVillaCeleste',
+  facebook: 'https://www.facebook.com/share/1H8KdLfACK/?mibextid=wwXIfr',
   instagram: 'https://www.instagram.com/hotel.villaceleste',
+  maps: 'https://maps.google.com/?q=Hotel+Villa+Celeste+Tlapa+de+Comonfort',
   city: 'Tlapa de Comonfort, Guerrero',
   region: 'Región de La Montaña · México',
 }
@@ -23,7 +24,7 @@ export const tlapaLogo = '/images/logos/tlapa-gobierno.webp'
 export const heroSlides = [22, 6, 14, 34, 151, 11].map((n) => img('Hotel', n))
 
 // Imagen de respaldo del hero (se muestra mientras carga el video / si no carga)
-export const heroPoster = img('Hotel', 157)
+export const heroPoster = img('Hotel', 6)
 
 export interface RoomType {
   slug: string
@@ -35,53 +36,78 @@ export interface RoomType {
   images: string[]
 }
 
-// NOTA: los trípticos no especifican categorías ni tarifas de habitación.
-// Los tipos siguientes se definieron agrupando las fotos reales por estilo,
-// número de camas y acabados, de modo que cada galería corresponde a su tipo.
+// Catálogo real de habitaciones (fuente: catálogo de WhatsApp Business del hotel).
+// Las tarifas no se publican en el catálogo; se consultan por teléfono/WhatsApp.
+// Las fotos se emparejaron por contexto (mismo tipo de cama, acabados y mobiliario)
+// a partir de nuestra galería, ya que las del catálogo eran de baja calidad.
+// "Doble de ventilador" y "Doble con ventilador" del catálogo son la misma
+// categoría (la segunda sin foto), por lo que se unificaron en una sola.
 export const roomTypes: RoomType[] = [
   {
-    slug: 'estandar',
-    name: 'Habitación Estándar',
-    tagline: 'Confort tradicional',
+    slug: 'junior-suite',
+    name: 'Junior Suite',
+    tagline: 'La más amplia',
     description:
-      'Acogedora habitación de estilo clásico con cama matrimonial, mobiliario de madera y decoración cálida. Ideal para una estancia tranquila y confortable.',
+      'Nuestra habitación más espaciosa, con cama King size, pisos de mármol y una cómoda zona de escritorio. Ambiente luminoso y moderno, ideal para estancias prolongadas o una ocasión especial.',
     capacity: '1 a 2 personas',
-    features: ['Cama matrimonial', 'Baño privado', 'Ventilador de techo', 'TV y Wi-Fi gratuito'],
-    // Habitaciones clásicas de una cama (cubrecama naranja / azul)
-    images: [128, 129, 130, 132, 138, 139, 141].map((n) => img('Hotel', n)),
+    features: ['1 cama King size', 'Amplio espacio', 'Pisos de mármol', 'Escritorio de trabajo', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Solo habitaciones de UNA cama King, piso de mármol, cubrecama verde tropical
+    images: [120, 119, 121, 123, 124, 122].map((n) => img('Hotel', n)),
   },
   {
-    slug: 'doble',
-    name: 'Habitación Doble',
-    tagline: 'Espacio para compartir',
+    slug: 'sencilla-king-aa',
+    name: 'Habitación Sencilla con A/C',
+    tagline: 'Descanso con clima',
     description:
-      'Perfecta para familias o grupos, con dos camas y amplio espacio. Comodidad y privacidad en un ambiente luminoso y bien ventilado.',
-    capacity: '2 a 4 personas',
-    features: ['2 camas', 'Baño privado', 'Clóset amplio', 'TV y Wi-Fi gratuito'],
-    // Habitaciones con dos camas
-    images: [133, 134, 135, 136, 110, 112].map((n) => img('Hotel', n)),
-  },
-  {
-    slug: 'superior',
-    name: 'Habitación Superior',
-    tagline: 'Estilo renovado',
-    description:
-      'Habitaciones renovadas con pisos de mármol, acabados contemporáneos y baño moderno, conservando el encanto del hotel.',
+      'Habitación con cama King size y aire acondicionado, perfecta para descansar del calor de La Montaña. Cómoda, privada y con baño propio.',
     capacity: '1 a 2 personas',
-    features: ['Cama matrimonial o King', 'Baño moderno', 'Pisos de mármol', 'Escritorio de trabajo'],
-    // Habitaciones modernas, piso de mármol, cubrecama verde
-    images: [111, 121, 122, 123, 124, 125].map((n) => img('Hotel', n)),
+    features: ['1 cama King size', 'Aire acondicionado', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Cama King, cubrecama turquesa, aire acondicionado
+    images: [138, 140, 141, 139].map((n) => img('Hotel', n)),
   },
   {
-    slug: 'suite',
-    name: 'Suite Villa Celeste',
-    tagline: 'La máxima comodidad',
+    slug: 'doble-aa',
+    name: 'Habitación Doble con A/C',
+    tagline: 'Para compartir, con clima',
     description:
-      'Nuestra opción más amplia, con cama King, sala de estar y detalles de bienvenida. El espacio ideal para una ocasión especial o estancias prolongadas.',
+      'Dos camas matrimoniales y aire acondicionado en un espacio amplio. La opción ideal para familias o grupos que buscan comodidad y frescura.',
     capacity: '2 a 4 personas',
-    features: ['Cama King + sala de estar', 'Baño completo', 'Amplio espacio', 'Amenidades de bienvenida'],
-    // Suites amplias con sala / cama King
-    images: [115, 120, 144, 145, 147].map((n) => img('Hotel', n)),
+    features: ['2 camas matrimoniales', 'Aire acondicionado', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Dos camas, cubrecama verde tropical, piso de mármol, aire acondicionado
+    images: [110, 111, 112, 115, 113].map((n) => img('Hotel', n)),
+  },
+  {
+    slug: 'doble-ventilador',
+    name: 'Habitación Doble con Ventilador',
+    tagline: 'Espacio para dos',
+    description:
+      'Habitación con dos camas y ventilador de techo, cómoda y bien ventilada. Una opción práctica para compartir sin renunciar al confort.',
+    capacity: '2 a 4 personas',
+    features: ['2 camas', 'Ventilador de techo', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Dos camas, cubrecama naranja, ventilador
+    images: [135, 133, 137, 134, 136].map((n) => img('Hotel', n)),
+  },
+  {
+    slug: 'sencilla-ventilador',
+    name: 'Habitación Sencilla con Ventilador',
+    tagline: 'Confort esencial',
+    description:
+      'Acogedora habitación con cama matrimonial y ventilador de techo. Sencilla, limpia y confortable, perfecta para una estancia tranquila.',
+    capacity: '1 a 2 personas',
+    features: ['1 cama matrimonial', 'Ventilador de techo', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Una cama matrimonial, cubrecama beige a rayas, ventilador
+    images: [143, 144, 145, 147].map((n) => img('Hotel', n)),
+  },
+  {
+    slug: 'triple-ventilador',
+    name: 'Habitación Triple con Ventilador',
+    tagline: 'Ideal para grupos',
+    description:
+      'Amplia habitación con tres camas y ventilador de techo, pensada para grupos de amigos o familias. Espacio y comodidad a un excelente valor.',
+    capacity: 'Hasta 3 personas',
+    features: ['3 camas', 'Ventilador de techo', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    // Única foto disponible es la del catálogo (adaptada a formato horizontal)
+    images: ['/images/Catalogo/triple-ventilador.webp'],
   },
 ]
 

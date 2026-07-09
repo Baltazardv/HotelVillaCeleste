@@ -15,7 +15,7 @@ export default function RoomsPage() {
       <PageHero
         title="Habitaciones"
         subtitle="Confort, descanso y el encanto colonial de Villa Celeste en cada espacio."
-        image={roomTypes[3].images[0]}
+        image={roomTypes[0].images[0]}
       />
 
       <div className="py-16 md:py-20 px-6 md:px-12 lg:px-16 bg-navy-900">

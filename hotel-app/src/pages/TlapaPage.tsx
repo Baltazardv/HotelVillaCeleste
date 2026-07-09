@@ -16,6 +16,8 @@ const nearby = [
   { Icon: Mountain, name: 'Región de La Montaña', distance: 'Paisajes y cultura' },
 ]
 
+const tlapaVideo = withBase('/videos/video-tlapa.mp4')
+
 export default function TlapaPage() {
   const [lb, setLb] = useState<{ images: string[]; index: number } | null>(null)
 
@@ -53,7 +55,42 @@ export default function TlapaPage() {
         </div>
       </section>
 
-      <section className="pb-8 px-6 md:px-12 lg:px-16 bg-navy-900">
+      {/* Video storytelling — Tlapa desde el cielo */}
+      <section className="py-16 px-6 md:px-12 lg:px-16" style={{ background: '#0d1f3c' }}>
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-8">
+              <p className="text-yellow-400 text-xs md:text-sm tracking-[0.3em] uppercase font-medium mb-3">
+                Tlapa desde las alturas
+              </p>
+              <h2 className="text-2xl md:text-4xl font-light text-white mb-4">
+                Donde la Montaña abraza a la ciudad
+              </h2>
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                Antes de recorrer sus calles, míralas desde el cielo. Los techos, la Catedral y el
+                verdor de La Montaña dibujan el paisaje que espera a los huéspedes de Villa Celeste.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+              <video
+                className="w-full h-auto block"
+                src={tlapaVideo}
+                poster={med(tlapaAttractions[0].images[0])}
+                controls
+                playsInline
+                preload="metadata"
+              />
+            </div>
+            <p className="text-center text-gray-500 text-xs mt-4 tracking-wide">
+              Un recorrido aéreo por Tlapa de Comonfort · Región de La Montaña, Guerrero
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="pb-8 pt-8 px-6 md:px-12 lg:px-16 bg-navy-900">
         <div className="max-w-6xl mx-auto space-y-16">
           {tlapaAttractions.map((a, ai) => (
             <Reveal key={a.title}>
