@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react'
 import { contact, logo } from '../data/site'
 import { thumb } from '../data/img'
 
@@ -58,11 +58,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={contact.phone2.href} className="flex items-center gap-2 text-gray-400 text-sm hover:text-yellow-400 transition-colors">
-                  <Phone size={13} className="text-yellow-400/60" />{contact.phone2.display}
-                </a>
-              </li>
-              <li>
                 <a href={contact.whatsapp.href} className="flex items-center gap-2 text-gray-400 text-sm hover:text-green-400 transition-colors">
                   <MessageCircle size={13} className="text-green-400/70" />WhatsApp: {contact.whatsapp.display}
                 </a>
@@ -70,6 +65,12 @@ export default function Footer() {
               <li>
                 <a href={`mailto:${contact.email}`} className="flex items-center gap-2 text-gray-400 text-sm hover:text-blue-400 transition-colors break-all">
                   <Mail size={13} className="text-blue-400/60 flex-shrink-0" />{contact.email}
+                </a>
+              </li>
+              <li>
+                <a href={contact.maps} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-gray-400 text-sm hover:text-yellow-400 transition-colors">
+                  <MapPin size={13} className="text-yellow-400/60 flex-shrink-0 mt-0.5" />
+                  <span>{contact.address.street}<br />{contact.address.cityLine}</span>
                 </a>
               </li>
             </ul>

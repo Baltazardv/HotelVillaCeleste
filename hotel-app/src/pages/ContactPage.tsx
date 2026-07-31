@@ -45,21 +45,6 @@ const methods = [
     value_cls: 'text-yellow-300',
     btn: 'bg-yellow-400 hover:bg-yellow-300',
   },
-  {
-    kind: 'phone2',
-    Icon: Phone,
-    title: 'Teléfono 2',
-    sub: 'Línea alternativa',
-    value: contact.phone2.display,
-    href: contact.phone2.href,
-    cta: 'Llamar',
-    external: false,
-    image: '/images/Hotel/vc-156.webp',
-    border: 'border-yellow-400/30 hover:border-yellow-400/60',
-    chip: 'bg-yellow-400/20 text-yellow-300',
-    value_cls: 'text-yellow-300',
-    btn: 'bg-yellow-400 hover:bg-yellow-300',
-  },
 ]
 
 export default function ContactPage() {
@@ -74,7 +59,7 @@ export default function ContactPage() {
       <section className="py-16 px-6 md:px-12 lg:px-16 bg-navy-900">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="grid sm:grid-cols-2 gap-6 mb-8">
               {methods.map((m) => {
                 const Icon = m.Icon
                 const src = m.image.startsWith('http') ? m.image : med(m.image)
@@ -132,13 +117,17 @@ export default function ContactPage() {
                 <img src={U('1687902346888-1320f25fe265')} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #060d18 0%, #060d18 55%, rgba(6,13,24,0.82) 100%)' }} />
                 <div className="relative z-10 p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <MapPin size={20} className="text-yellow-400" />
+                  <div className="flex items-start gap-3 mb-4">
+                    <MapPin size={20} className="text-yellow-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <h3 className="text-white font-semibold leading-tight">Ubicación</h3>
-                      <p className="text-gray-200 text-sm">{contact.city}</p>
+                      <p className="text-gray-200 text-sm">{contact.address.street}</p>
+                      <p className="text-gray-200 text-sm">{contact.address.cityLine}</p>
                     </div>
                   </div>
+                  <a href={contact.maps} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 px-4 py-2.5 rounded-xl text-sm font-semibold mb-3 transition-colors" style={{ color: '#0a1628' }}>
+                    <MapPin size={16} /> Cómo llegar (Google Maps)
+                  </a>
                   <div className="flex gap-3">
                     <a href={contact.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-600/20 border border-blue-400/40 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-600/35 transition-colors flex-1 justify-center backdrop-blur-sm">
                       <FacebookIcon /> <span className="text-xs font-medium">Facebook</span>
@@ -156,8 +145,8 @@ export default function ContactPage() {
           <Reveal delay={150}>
             <div className="mt-8 rounded-2xl overflow-hidden border border-white/10" style={{ height: 360 }}>
               <iframe
-                title="Mapa Tlapa de Comonfort"
-                src="https://www.google.com/maps?q=Tlapa%20de%20Comonfort%2C%20Guerrero&output=embed"
+                title="Mapa Hotel Villa Celeste"
+                src={contact.mapsEmbed}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

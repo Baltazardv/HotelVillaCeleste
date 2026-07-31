@@ -13,9 +13,6 @@ export default function CTABand({ title, text }: { title?: string; text?: string
           <a href={contact.phone1.href} className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors" style={{ color: '#0a1628' }}>
             <Phone size={16} /> {contact.phone1.display}
           </a>
-          <a href={contact.phone2.href} className="inline-flex items-center gap-2 bg-yellow-400 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors" style={{ color: '#0a1628' }}>
-            <Phone size={16} /> {contact.phone2.display}
-          </a>
           <a href={contact.whatsappMsg} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-400 transition-colors">
             <MessageCircle size={16} /> WhatsApp
           </a>

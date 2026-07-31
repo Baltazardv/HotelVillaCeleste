@@ -1,15 +1,25 @@
 // Central site data — Hotel Villa Celeste, Tlapa de Comonfort, Guerrero
 
+// Consulta usada para los enlaces y el mapa embebido de Google Maps.
+const mapsQuery = encodeURIComponent(
+  'Hotel Villa Celeste, Calle Morelos 360, Col. San Francisco, Tlapa de Comonfort, Guerrero, 41300',
+)
+
 export const contact = {
   whatsapp: { display: '+52 (757) 477-5876', href: 'https://wa.me/527574775876' },
   whatsappMsg:
     'https://wa.me/527574775876?text=Hola,%20me%20gustar%C3%ADa%20conocer%20disponibilidad%20y%20tarifas%20del%20Hotel%20Villa%20Celeste.',
   phone1: { display: '+52 (757) 47 60 606', href: 'tel:+527574760606' },
-  phone2: { display: '+52 (757) 49 71 625', href: 'tel:+527574971625' },
   email: 'hotel.villa.celeste26@gmail.com',
   facebook: 'https://www.facebook.com/share/1H8KdLfACK/?mibextid=wwXIfr',
   instagram: 'https://www.instagram.com/hotel.villaceleste',
-  maps: 'https://maps.google.com/?q=Hotel+Villa+Celeste+Tlapa+de+Comonfort',
+  address: {
+    street: 'Calle Morelos No. 360, Col. San Francisco',
+    cityLine: 'Tlapa de Comonfort, Guerrero. C.P. 41300',
+    full: 'Calle Morelos No. 360, Col. San Francisco, Tlapa de Comonfort, Guerrero, C.P. 41300',
+  },
+  maps: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
+  mapsEmbed: `https://www.google.com/maps?q=${mapsQuery}&output=embed`,
   city: 'Tlapa de Comonfort, Guerrero',
   region: 'Región de La Montaña · México',
 }
@@ -48,9 +58,9 @@ export const roomTypes: RoomType[] = [
     name: 'Junior Suite',
     tagline: 'La más amplia',
     description:
-      'Nuestra habitación más espaciosa, con cama King size, pisos de mármol y una cómoda zona de escritorio. Ambiente luminoso y moderno, ideal para estancias prolongadas o una ocasión especial.',
+      'Nuestra habitación más espaciosa, con cama King size, piso tipo mármol y una cómoda zona de escritorio. Ambiente luminoso y moderno, ideal para estancias prolongadas o una ocasión especial.',
     capacity: '1 a 2 personas',
-    features: ['1 cama King size', 'Amplio espacio', 'Pisos de mármol', 'Escritorio de trabajo', 'Baño privado', 'TV y Wi-Fi gratuito'],
+    features: ['1 cama King size', 'Amplio espacio', 'Piso tipo mármol', 'Escritorio de trabajo', 'Baño privado', 'TV y Wi-Fi gratuito'],
     // Solo habitaciones de UNA cama King, piso de mármol, cubrecama verde tropical
     images: [120, 119, 121, 123, 124, 122].map((n) => img('Hotel', n)),
   },
