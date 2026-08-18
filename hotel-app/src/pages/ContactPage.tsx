@@ -1,6 +1,7 @@
 import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
+import BookingWidget from '../components/BookingWidget'
 import { contact, service } from '../data/site'
 import { med } from '../data/img'
 
@@ -58,6 +59,18 @@ export default function ContactPage() {
 
       <section className="py-16 px-6 md:px-12 lg:px-16 bg-navy-900">
         <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <div className="mb-10">
+              <div className="text-center mb-5">
+                <h2 className="text-2xl md:text-3xl font-light text-white mb-2">Reserva en línea</h2>
+                <p className="text-gray-300 text-sm">Consulta disponibilidad y reserva directo con el hotel, al instante.</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3 md:p-5">
+                <BookingWidget />
+              </div>
+            </div>
+          </Reveal>
+
           <Reveal>
             <div className="grid sm:grid-cols-2 gap-6 mb-8">
               {methods.map((m) => {
