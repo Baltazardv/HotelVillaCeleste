@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
@@ -49,6 +51,18 @@ const methods = [
 ]
 
 export default function ContactPage() {
+  const { hash } = useLocation()
+
+  // Al llegar con #reservar (botón "Reservar" del menú), desplaza suavemente
+  // a la sección del motor de reservas.
+  useEffect(() => {
+    if (!hash) return
+    const el = document.querySelector(hash)
+    if (!el) return
+    const t = setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+    return () => clearTimeout(t)
+  }, [hash])
+
   return (
     <>
       <PageHero
@@ -60,7 +74,7 @@ export default function ContactPage() {
       <section className="py-16 px-6 md:px-12 lg:px-16 bg-navy-900">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <div className="mb-10">
+            <div id="reservar" className="mb-10" style={{ scrollMarginTop: '90px' }}>
               <div className="text-center mb-5">
                 <h2 className="text-2xl md:text-3xl font-light text-white mb-2">Reserva en línea</h2>
                 <p className="text-gray-300 text-sm">Consulta disponibilidad y reserva directo con el hotel, al instante.</p>

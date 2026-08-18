@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import { logo, contact } from '../data/site'
+import { logo } from '../data/site'
 import { thumb } from '../data/img'
 
 const links = [
@@ -16,7 +16,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -27,8 +27,10 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false)
-    window.scrollTo(0, 0)
-  }, [pathname])
+    // No forzar el scroll al tope cuando hay un ancla (#reservar): en ese caso
+    // la propia página destino se encarga de desplazarse a la sección.
+    if (!hash) window.scrollTo(0, 0)
+  }, [pathname, hash])
 
   const onHome = pathname === '/'
   const solid = scrolled || !onHome
@@ -54,13 +56,13 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a
-          href={contact.phone1.href}
+        <Link
+          to="/contacto#reservar"
           className="hidden md:inline-flex items-center gap-2 bg-yellow-400 px-5 py-2 rounded-lg text-sm font-semibold hover:bg-yellow-300 transition-colors"
           style={{ color: '#0a1628' }}
         >
           Reservar
-        </a>
+        </Link>
 
         <button className="md:hidden text-white p-1" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menú">
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
@@ -81,9 +83,9 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <a href={contact.phone1.href} className="mt-3 bg-yellow-400 text-center py-3 rounded-lg font-semibold text-sm" style={{ color: '#0a1628' }}>
+            <Link to="/contacto#reservar" className="mt-3 bg-yellow-400 text-center py-3 rounded-lg font-semibold text-sm" style={{ color: '#0a1628' }}>
               Reservar ahora
-            </a>
+            </Link>
           </nav>
         </div>
       )}
