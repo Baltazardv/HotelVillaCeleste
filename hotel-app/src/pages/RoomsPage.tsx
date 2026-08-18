@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Users, Check } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
@@ -62,9 +63,9 @@ export default function RoomsPage() {
                     ))}
                   </ul>
                   <div className="flex flex-wrap gap-3">
-                    <a href={contact.phone1.href} className="bg-yellow-400 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors" style={{ color: '#0a1628' }}>
+                    <Link to="/contacto#reservar" className="bg-yellow-400 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors" style={{ color: '#0a1628' }}>
                       Reservar
-                    </a>
+                    </Link>
                     <a href={contact.whatsappMsg} target="_blank" rel="noopener noreferrer" className="border border-white/20 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-white hover:text-black transition-all">
                       Consultar por WhatsApp
                     </a>

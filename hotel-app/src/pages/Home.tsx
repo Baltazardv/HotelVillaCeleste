@@ -70,9 +70,9 @@ export default function Home() {
                   <Link to="/habitaciones" className="bg-yellow-400 px-8 py-3 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors" style={{ color: '#0a1628' }}>
                     Ver habitaciones
                   </Link>
-                  <a href={contact.phone1.href} className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium text-sm hover:bg-white hover:text-black transition-all">
+                  <Link to="/contacto#reservar" className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium text-sm hover:bg-white hover:text-black transition-all">
                     Reservar ahora
-                  </a>
+                  </Link>
                 </div>
               </FadeIn>
               <FadeIn delay={1500} duration={1000}>
